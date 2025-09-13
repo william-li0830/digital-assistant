@@ -7,57 +7,65 @@ import java.util.Scanner;
  */
 public class DigitalAssistant {
 
+    static Scanner scanner = new Scanner(System.in);
+
     // Main method: Starts the program and displays the menu
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in) // Create Scanner object for user input
-        ) {
-            boolean exit = false; // Boolean to control the menu loop
-            // Main menu loop
-            while (!exit) {
-                System.out.println("Choose an option:");
-                System.out.println("1. Variable casting");
-                System.out.println("2. Grade calculator");
-                System.out.println("3. For loop program");
-                System.out.println("4. Guessing game (While loop)");
-                System.out.println("5. Tax calculator");
-                System.out.println("6. Array min, max, and average");
-                System.out.println("7. Person class example");
-                System.out.println("0. Exit");
-                
-                int choice = scanner.nextInt(); // Get the user's choice
-                
-                // Switch case to handle menu options
-                switch (choice) {
-                    case 1:
-                        variableCasting(); // Call variable casting method
-                        break;
-                    case 2:
-                        gradeCalculator(); // Call grade calculator method
-                        break;
-                    case 3:
-                        forLoopExample(); // Call for-loop example method
-                        break;
-                    case 4:
-                        guessingGame(); // Call guessing game method
-                        break;
-                    case 5:
-                        taxCalculator(); // Call tax calculator method
-                        break;
-                    case 6:
-                        arrayExample(); // Call array example method
-                        break;
-                    case 7:
-                        personClassExample(); // Call Person class example method
-                        break;
-                    case 0:
-                        exit = true; // Exit the program
-                        break;
-                    default:
-                        System.out.println("Invalid option. Please try again.");
-                }
+        boolean exit = false; // Boolean to control the menu loop
+        // Main menu loop
+        while (!exit) {
+            System.out.println("Choose an option:");
+            System.out.println("1. Variable casting");
+            System.out.println("2. Grade calculator");
+            System.out.println("3. For loop program");
+            System.out.println("4. Guessing game (While loop)");
+            System.out.println("5. Tax calculator");
+            System.out.println("6. Array min, max, and average");
+            System.out.println("7. Person class example");
+            System.out.println("0. Exit");
+
+            int choice = scanner.nextInt(); // Get the user's choice
+            scanner.nextLine(); // consume the leftover newline
+
+            // Switch case to handle menu options
+            switch (choice) {
+                case 1:
+                    variableCasting(); // Call variable casting method
+                    break;
+                case 2:
+                    gradeCalculator(); // Call grade calculator method
+                    break;
+                case 3:
+                    forLoopExample(); // Call for-loop example method
+                    break;
+                case 4:
+                    guessingGame(); // Call guessing game method
+                    break;
+                case 5:
+                    taxCalculator(); // Call tax calculator method
+                    break;
+                case 6:
+                    arrayExample(); // Call array example method
+                    break;
+                case 7:
+                    personClassExample(); // Call Person class example method
+                    break;
+                case 0:
+                    exit = true; // Exit the program
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
-            // Close the scanner object
-        } // Boolean to control the menu loop
+
+            System.out.println("\nDo you want to return to the main menu? (yes/no)");
+            String response = scanner.nextLine().trim().toLowerCase();
+            
+            if (response.equals("no") || response.equals("n")) {
+                scanner.close();
+                exit = true;
+                System.out.println("Goodbye!");
+            }
+        }
     }
 
     // 1. Variable Casting
