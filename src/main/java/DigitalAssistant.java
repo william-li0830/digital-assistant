@@ -59,7 +59,7 @@ public class DigitalAssistant {
 
             System.out.println("\nDo you want to return to the main menu? (yes/no)");
             String response = scanner.nextLine().trim().toLowerCase();
-            
+
             if (response.equals("no") || response.equals("n")) {
                 scanner.close();
                 exit = true;
@@ -70,9 +70,34 @@ public class DigitalAssistant {
 
     // 1. Variable Casting
     public static void variableCasting() {
-        // TODO: Prompt user for a number
-        // TODO: Provide casting options for int, float, and String
-        // TODO: Implement appropriate casting based on user choice
+        System.out.println("*** Variable Casting ***");
+        System.out.println("Pick a number");
+        
+        if (!scanner.hasNextDouble()) {
+            scanner.nextLine();
+            System.out.println("Invalid number");
+            return;
+        }
+        
+        double number = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println("Pick casting option (int / float / string)");
+        String castingOption = scanner.nextLine().trim().toLowerCase();
+
+        switch (castingOption) {
+            case "int":
+                System.out.println("Casted to " + (int) number);
+                break;
+            case "float":
+                System.out.println("Casted to " + (float) number);
+                break;
+            case "string":
+                System.out.println("Casted to " + "\"" + Double.toString(number) + "\"" );
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
     }
 
     // 2. Grade Calculator with Conditional Logic
