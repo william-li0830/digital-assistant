@@ -228,18 +228,59 @@ public class DigitalAssistant {
         }
 
         int quantity = (int) (bankBalance / totalPrice);
-        
+
         if (quantity < 0) {
             quantity = 0;
         }
 
         System.out.println("You can buy " + quantity + " items");
     }
-  
+
     // 6. Array Example with Min, Max, and Average
     public static void arrayExample() {
-        // TODO: Allow the user to input multiple values into an array
-        // TODO: Implement logic to find the minimum, maximum, and average values
+
+        System.out.println("***Array example****");
+        System.out.println("Enter whole numbers separated by spaces, then press Enter");
+
+        // Use next line because we don't know the how many numbers the user put in
+        String userInput = scanner.nextLine();
+
+        // Split the userInput by space
+        String[] stringArray = userInput.trim().split("\\s+");
+        int length = stringArray.length;
+        int[] numberArray = new int[length];
+
+        try {
+            for (int i = 0; i < length; i++) {
+                String str = stringArray[i];
+                int number = Integer.parseInt(str);
+                numberArray[i] = number;
+            }
+        } catch (Exception e) {
+            System.err.println("Invalid input");
+            return;
+        }
+
+        int min = numberArray[0];
+        int max = numberArray[0];
+        int sum = 0;
+
+        for (int i = 0; i < length; i++) {
+            int current = numberArray[i];
+
+            sum = sum + current;
+
+            if (current > max) {
+                max = current;
+            }
+            if (current < min) {
+                min = current;
+            }
+        }
+
+        double average = sum / length;
+
+        System.out.println("Min is " + min + "  Max is " + max + "  Average is " + average);
     }
 
     // 7. Person Class Example with Methods and Objects
@@ -263,7 +304,7 @@ public class DigitalAssistant {
 //        // TODO: Provide an option to update the person's information
 //    }
 
-}
+    }
 
     // Person class definition
     static class Person {
