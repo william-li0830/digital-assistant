@@ -285,32 +285,80 @@ public class DigitalAssistant {
 
     // 7. Person Class Example with Methods and Objects
     public static void personClassExample() {
-//
-//        System.out.println("**** Character Creator *****");
-//        System.out.println("Enter a name, age and a favorite quote");
-//
-//        String name = scanner.nextLine();
-//        String favoriteQuote = scanner.nextLine();
-//
-//        int age = scanner.nextInt();
-//
-//        Person character = new Person(name, age, favoriteQuote);
-////        character.display();
-//
-//        System.out.println(name + age + favoriteQuote);
-//
-//        // TODO: Prompt the user for a name, age, and favorite quote
-//        // TODO: Create a Person object using the user's input
-//        // TODO: Provide an option to update the person's information
-//    }
+        System.out.println("**** Character Creator *****");
 
+        System.out.println("Enter a name");
+        String name = scanner.nextLine();
+
+        System.out.println("Ente age");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter favourite quote");
+        String favoriteQuote = scanner.nextLine();
+
+        Person person = new Person(name, age, favoriteQuote);
+
+        System.out.println("New person created:\n" + person);
+
+        System.out.println("Do you want to update the info? (yes/no)");
+        if (scanner.nextLine().equalsIgnoreCase("yes")) {
+            System.out.println("Enter new name:");
+            name = scanner.nextLine();
+            person.setName(name);
+
+            System.out.println("Enter new age:");
+            age = scanner.nextInt();
+            scanner.nextLine();
+            person.setAge(age);
+
+            System.out.println("Enter new quote:");
+            favoriteQuote = scanner.nextLine();
+            person.setFavoriteQuote(favoriteQuote);
+
+            System.out.println("Updated person:\n" + person);
+        }
+    }
+}
+
+class Person {
+
+    private String name;
+    private int age;
+    private String favoriteQuote;
+
+    Person(String name, int age, String favoriteQuote) {
+        this.name = name;
+        this.age = age;
+        this.favoriteQuote = favoriteQuote;
     }
 
-    // Person class definition
-    static class Person {
-        // TODO: Declare instance variables for name, age, and favorite quote
-        // TODO: Create a constructor to initialize the Person object
-        // TODO: Implement getters and setters for each variable
-        // TODO: Override the toString method to display the person’s information
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getFavoriteQuote() {
+        return favoriteQuote;
+    }
+
+    public void setFavoriteQuote(String favoriteQuote) {
+        this.favoriteQuote = favoriteQuote;
+    }
+
+    @Override
+    public String toString() {
+        return name + "(" + age + "): " + favoriteQuote;
     }
 }
