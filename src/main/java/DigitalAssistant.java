@@ -178,7 +178,7 @@ public class DigitalAssistant {
                 scanner.nextLine();
                 continue;
             }
-            
+
             scanner.nextLine();
 
             if (userNumber < target) {
@@ -193,56 +193,49 @@ public class DigitalAssistant {
 
     // 5. Tax Calculator with Additional Feature
     public static void taxCalculator() {
-//
-//        System.out.println("**** Tax Calculator ****");
-//        System.out.println("Enter a Tax Rate plus price");
-//
-//        double taxRate = scanner.nextDouble();
-//        scanner.nextLine();
-//
-//        if (!scanner.hasNextDouble()) {
-//            System.out.println("Ivalid Tax Rate");
-//            scanner.nextLine();
-//            return;
-//        }
-//        if (taxRate < 0 || taxRate > 50) {
-//            System.out.println("Ivalid Tax Rate");
-//            return;
-//        }
-//
-//        System.out.println("Enter your bank balance");
-//
-//        double bankBalance = scanner.nextDouble();
-//
-//        if (!scanner.hasNextDouble()) {
-//            System.out.println("Invalid Bank Balance");
-//            scanner.nextLine();
-//            return;
-//        }
-//        if (bankBalance < 0) {
-//            System.out.println("You can't buy anything");
-//
-//        }
-//
-//        if (bankBalance > 0) {
-//            System.out.println("What do you want to buy?");
-//
-//            //Items
-//            System.out.println("Boba Tea: $7");
-//            System.out.println("Fried chicken(KFC): $15");
-//            System.out.println("Tesla Model Y: $64,990 ");
-//            System.out.println("Cybertruck: $114,990");
-//            System.out.println("Macbook Pro: $1000");
-//            System.out.println("iPhone 17 Pro Max: $934");
-//            System.out.println("AirPods Pro: $200");
-//            System.out.println("Private jet: $3,0000");
-//            System.out.println("Mansion: $435,0820");
-//        }
-    }
-    // TODO: Prompt the user for the price and tax rate
-    // TODO: Calculate total price with tax
-    // TODO: Prompt the user for their bank balance and calculate how many items they can afford
 
+        System.out.println("**** Tax Calculator ****");
+        System.out.println("Enter a price");
+
+        double price, taxRate, totalPrice, bankBalance;
+
+        try {
+            price = scanner.nextDouble();
+            scanner.nextLine();
+
+            System.out.println("Enter a tax rate in percentage");
+
+            taxRate = scanner.nextDouble();
+            scanner.nextLine();
+
+            if (taxRate < 0 || taxRate > 50) {
+                System.err.println("Invalid input: Tax rate must be between 0 - 50");
+                return;
+            }
+
+            totalPrice = price * taxRate / 100 + price;
+
+            System.out.println("Your total price is " + totalPrice);
+            System.out.println("Enter your bank balance");
+
+            bankBalance = scanner.nextDouble();
+            scanner.nextLine();
+
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+            scanner.nextLine();
+            return;
+        }
+
+        int quantity = (int) (bankBalance / totalPrice);
+        
+        if (quantity < 0) {
+            quantity = 0;
+        }
+
+        System.out.println("You can buy " + quantity + " items");
+    }
+  
     // 6. Array Example with Min, Max, and Average
     public static void arrayExample() {
         // TODO: Allow the user to input multiple values into an array
