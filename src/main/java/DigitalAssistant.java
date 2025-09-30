@@ -21,8 +21,17 @@ public class DigitalAssistant {
             System.out.println("7. Person class example");
             System.out.println("0. Exit");
 
-            int choice = scanner.nextInt(); // Get the user's choice
-            scanner.nextLine(); // consume the leftover newline
+            int choice;
+
+            try {
+                choice = scanner.nextInt(); // Get the user's choice
+                scanner.nextLine();
+            } catch (Exception e) {
+
+                System.err.println("Error");
+                scanner.nextLine(); // consume the leftover newline
+                continue;
+            }
 
             // Switch case to handle menu options
             switch (choice) {
@@ -285,80 +294,86 @@ public class DigitalAssistant {
 
     // 7. Person Class Example with Methods and Objects
     public static void personClassExample() {
+
+        // 1️⃣ Declare the class first
+        class Person {
+
+            private String name;
+            private int age;
+            private String favoriteQuote;
+
+            Person(String name, int age, String favoriteQuote) {
+                this.name = name;
+                this.age = age;
+                this.favoriteQuote = favoriteQuote;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                if (!name.isEmpty()) {
+                    this.name = name;
+                }
+            }
+
+            public int getAge() {
+                return age;
+            }
+
+            public void setAge(int age) {
+                this.age = age;
+            }
+
+            public String getFavoriteQuote() {
+                return favoriteQuote;
+            }
+
+            public void setFavoriteQuote(String favoriteQuote) {
+                if (!favoriteQuote.isEmpty()) {
+                    this.favoriteQuote = favoriteQuote;
+                }
+            }
+
+            @Override
+            public String toString() {
+                return name + "(" + age + "): " + favoriteQuote;
+            }
+        } // end of Person class
+
+        // 2️⃣ Now create the object
         System.out.println("**** Character Creator *****");
 
-        System.out.println("Enter a name");
-        String name = scanner.nextLine();
+        System.out.println("Enter a name: ");
+        String name = scanner.nextLine();  // waits for user input
 
-        System.out.println("Ente age");
-        int age = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Enter an age: ");
+        int age;
 
-        System.out.println("Enter favourite quote");
-        String favoriteQuote = scanner.nextLine();
+        try {
+            age = scanner.nextInt();
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Invalid age, please enter a number.");
+            scanner.nextLine();
+            return;
+        }
+        System.out.println("Enter favourite quote: ");
+        String favoriteQuote = scanner.nextLine();  // waits for input
 
         Person person = new Person(name, age, favoriteQuote);
 
         System.out.println("New person created:\n" + person);
 
-        System.out.println("Do you want to update the info? (yes/no)");
-        if (scanner.nextLine().equalsIgnoreCase("yes")) {
-            System.out.println("Enter new name:");
-            name = scanner.nextLine();
-            person.setName(name);
-
-            System.out.println("Enter new age:");
-            age = scanner.nextInt();
-            scanner.nextLine();
-            person.setAge(age);
-
-            System.out.println("Enter new quote:");
-            favoriteQuote = scanner.nextLine();
-            person.setFavoriteQuote(favoriteQuote);
-
-            System.out.println("Updated person:\n" + person);
+        while (true) {
+            System.out.println("Do you want to update the info? (yes/no)");
+            String response = scanner.nextLine();
+            if (!response.equalsIgnoreCase("yes")) {
+                break;
+            }
         }
-    }
-}
 
-class Person {
-
-    private String name;
-    private int age;
-    private String favoriteQuote;
-
-    Person(String name, int age, String favoriteQuote) {
-        this.name = name;
-        this.age = age;
-        this.favoriteQuote = favoriteQuote;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getFavoriteQuote() {
-        return favoriteQuote;
-    }
-
-    public void setFavoriteQuote(String favoriteQuote) {
-        this.favoriteQuote = favoriteQuote;
-    }
-
-    @Override
-    public String toString() {
-        return name + "(" + age + "): " + favoriteQuote;
-    }
 }
