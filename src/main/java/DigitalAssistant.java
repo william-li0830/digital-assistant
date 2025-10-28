@@ -90,7 +90,7 @@ public class DigitalAssistant {
 
         scanner.nextLine();
         System.out.println("Pick casting option (int / float / string)");
-        String castingOption = scanner.nextLine().trim().toLowerCase();
+        String castingOption = scanner.nextLine().trim().toLowerCase();// sombody helped me with this line and I understand it now
 
         switch (castingOption) {
             case "int" ->
@@ -255,7 +255,7 @@ public class DigitalAssistant {
         String userInput = scanner.nextLine();
 
         // Split the userInput by space
-        String[] stringArray = userInput.trim().split("\\s+");
+        String[] stringArray = userInput.trim().split("\\s+");// sombody helped me with this line and I understand it now 
         int length = stringArray.length;
         int[] numberArray = new int[length];
 
